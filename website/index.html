@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de Precios de Vivienda en España</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">Análisis de Precios de Vivienda</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#metodologia">Metodología</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#resultados">Resultados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#variables">Variables Importantes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#conclusiones">Conclusiones</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header id="inicio" class="bg-light py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <h1 class="display-4 fw-bold">Predicción de Precios de Vivienda en España</h1>
+                    <p class="lead">Un análisis exhaustivo de las variables que influyen en el precio de la vivienda, integrando datos socioeconómicos municipales.</p>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                        <a href="#resultados" class="btn btn-primary btn-lg px-4 me-md-2">Ver Resultados</a>
+                        <a href="#variables" class="btn btn-outline-secondary btn-lg px-4">Variables Importantes</a>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <img src="images/house_price_chart.png" class="img-fluid rounded shadow" alt="Gráfico de precios de vivienda">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="resumen" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <h3 class="card-title">R² con Variables Socioeconómicas</h3>
+                            <p class="display-4 text-primary">0.8091</p>
+                            <p class="card-text">El modelo explica más del 80% de la varianza en los precios</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <h3 class="card-title">Mejora en Precisión</h3>
+                            <p class="display-4 text-success">+15.60%</p>
+                            <p class="card-text">Al incluir variables socioeconómicas municipales</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <h3 class="card-title">Reducción del Error</h3>
+                            <p class="display-4 text-danger">-12.25%</p>
+                            <p class="card-text">Disminución del RMSE con el modelo completo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="metodologia" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Metodología</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3>Datos Utilizados</h3>
+                    <ul class="list-group list-group-flush mb-4">
+                        <li class="list-group-item bg-light"><strong>Dataset de viviendas:</strong> 134,732 registros con características físicas y precios</li>
+                        <li class="list-group-item bg-light"><strong>Dataset municipal:</strong> Variables socioeconómicas para 67,756 registros</li>
+                        <li class="list-group-item bg-light"><strong>Integración:</strong> 51.83% de filas con datos socioeconómicos</li>
+                    </ul>
+                    
+                    <h3>Preprocesamiento</h3>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item bg-light">Limpieza de valores nulos y outliers</li>
+                        <li class="list-group-item bg-light">Creación de variables derivadas</li>
+                        <li class="list-group-item bg-light">Normalización de variables numéricas</li>
+                        <li class="list-group-item bg-light">Codificación one-hot de variables categóricas</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <h3>Modelos Evaluados</h3>
+                    <ul class="list-group list-group-flush mb-4">
+                        <li class="list-group-item bg-light">Ridge Regression</li>
+                        <li class="list-group-item bg-light">Random Forest</li>
+                    </ul>
+                    
+                    <h3>Validación</h3>
+                    <ul class="list-group list-group-flush mb-4">
+                        <li class="list-group-item bg-light">División 80/20 para entrenamiento/prueba</li>
+                        <li class="list-group-item bg-light">Métricas: RMSE, MAE, R²</li>
+                    </ul>
+                    
+                    <h3>Análisis de Importancia</h3>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item bg-light">Extracción de importancia de variables del modelo RandomForest</li>
+                        <li class="list-group-item bg-light">Agrupación por tipo de variable (vivienda, socioeconómica, categórica)</li>
+                        <li class="list-group-item bg-light">Visualización de las variables más influyentes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="resultados" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Resultados Comparativos</h2>
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6">
+                    <h3>Comparación de Modelos</h3>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Modelo</th>
+                                    <th>Dataset</th>
+                                    <th>RMSE</th>
+                                    <th>MAE</th>
+                                    <th>R²</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Ridge</td>
+                                    <td>Solo Vivienda</td>
+                                    <td>277,234.72</td>
+                                    <td>162,778.50</td>
+                                    <td>0.5360</td>
+                                </tr>
+                                <tr>
+                                    <td>RandomForest</td>
+                                    <td>Solo Vivienda</td>
+                                    <td>222,941.68</td>
+                                    <td>119,468.73</td>
+                                    <td>0.6999</td>
+                                </tr>
+                                <tr>
+                                    <td>Ridge</td>
+                                    <td>Con Socioeconómicas</td>
+                                    <td>296,985.14</td>
+                                    <td>175,579.27</td>
+                                    <td>0.5602</td>
+                                </tr>
+                                <tr class="table-success">
+                                    <td>RandomForest</td>
+                                    <td>Con Socioeconómicas</td>
+                                    <td>195,641.75</td>
+                                    <td>97,732.15</td>
+                                    <td>0.8091</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="images/model_r2_comparison.png" class="img-fluid rounded shadow" alt="Comparación de R² por modelo">
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3>Impacto de Variables Socioeconómicas</h3>
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><strong>Mejor modelo solo con variables de vivienda:</strong> RandomForest, R² = 0.6999</li>
+                                        <li class="list-group-item"><strong>Mejor modelo con variables socioeconómicas:</strong> RandomForest, R² = 0.8091</li>
+                                        <li class="list-group-item"><strong>Mejora en R²:</strong> +15.60%</li>
+                                        <li class="list-group-item"><strong>Mejora en RMSE:</strong> -12.25%</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="alert alert-info">
+                                        <p class="mb-0">La inclusión de variables socioeconómicas municipales resultó en una mejora significativa de la capacidad predictiva del modelo, demostrando la importancia del contexto socioeconómico en la determinación del precio de la vivienda.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="variables" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Variables Más Importantes</h2>
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6">
+                    <img src="images/feature_importance_top20.png" class="img-fluid rounded shadow" alt="Top 20 Variables Más Importantes">
+                </div>
+                <div class="col-lg-6">
+                    <h3>Top 5 Variables</h3>
+                    <div class="progress-container">
+                        <div class="d-flex justify-content-between">
+                            <span>Número de baños</span>
+                            <span>38.27%</span>
+                        </div>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 38.27%"></div>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between">
+                            <span>Índice de educación</span>
+                            <span>14.74%</span>
+                        </div>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 14.74%"></div>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between">
+                            <span>Metros cuadrados reales</span>
+                            <span>14.47%</span>
+                        </div>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 14.47%"></div>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between">
+                            <span>Provincia Baleares</span>
+                            <span>12.60%</span>
+                        </div>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 12.60%"></div>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between">
+                            <span>Población total</span>
+                            <span>7.19%</span>
+                        </div>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 7.19%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h3>Importancia por Tipo de Variable</h3>
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item bg-light d-flex justify-content-between align-items-center">
+                                    Variables de Vivienda
+                                    <span class="badge bg-primary rounded-pill">58.85%</span>
+                                </li>
+                                <li class="list-group-item bg-light d-flex justify-content-between align-items-center">
+                                    Variables Socioeconómicas
+                                    <span class="badge bg-success rounded-pill">26.87%</span>
+                                </li>
+                                <li class="list-group-item bg-light d-flex justify-content-between align-items-center">
+                                    Variables Categóricas
+                                    <span class="badge bg-info rounded-pill">14.27%</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="images/feature_importance_by_type.png" class="img-fluid rounded shadow" alt="Importancia por Tipo de Variable">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="conclusiones" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Conclusiones y Recomendaciones</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-header bg-primary text-white">
+                            <h3 class="card-title mb-0">Conclusiones</h3>
+                        </div>
+                        <div class="card-body">
+                            <ol class="list-group list-group-numbered">
+                                <li class="list-group-item">Las variables socioeconómicas municipales tienen un impacto significativo en la predicción de precios de vivienda, aportando casi el 27% de la capacidad predictiva.</li>
+                                <li class="list-group-item">El modelo de mejor rendimiento (RandomForest con variables socioeconómicas) explica más del 80% de la varianza en los precios.</li>
+                                <li class="list-group-item">El número de baños es la variable más importante, seguida por el índice de educación municipal, que supera incluso a los metros cuadrados útiles.</li>
+                                <li class="list-group-item">La ubicación geográfica, especialmente en zonas como Baleares, tiene un efecto considerable en el precio.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-header bg-success text-white">
+                            <h3 class="card-title mb-0">Recomendaciones</h3>
+                        </div>
+                        <div class="card-body">
+                            <ol class="list-group list-group-numbered">
+                                <li class="list-group-item">Utilizar el modelo completo (con variables socioeconómicas) para obtener predicciones más precisas del precio de la vivienda.</li>
+                                <li class="list-group-item">Considerar especialmente el número de baños, índice de educación y metros cuadrados como factores clave en la valoración inmobiliaria.</li>
+                                <li class="list-group-item">Actualizar periódicamente los datos socioeconómicos para mantener la relevancia del modelo.</li>
+                                <li class="list-group-item">Explorar la posibilidad de modelos específicos por región o tipo de vivienda para mejorar aún más la precisión.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Análisis de Precios de Vivienda en España</h5>
+                    <p>Un estudio sobre las variables más importantes para predecir el precio de la vivienda, integrando datos socioeconómicos municipales.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Enlaces</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#inicio" class="text-white">Inicio</a></li>
+                        <li><a href="#metodologia" class="text-white">Metodología</a></li>
+                        <li><a href="#resultados" class="text-white">Resultados</a></li>
+                        <li><a href="#variables" class="text-white">Variables Importantes</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Recursos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Informe Completo</a></li>
+                        <li><a href="#" class="text-white">Código Fuente</a></li>
+                        <li><a href="#" class="text-white">Datasets</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">© 2025 Análisis de Precios de Vivienda</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+# Informe de Diagnóstico de Integración de Datos (Corregido)
+
+## Estadísticas de Provincias
+- Provincias únicas en housing_df (original): 22
+- Provincias únicas en municipal_df (original): 46
+- Provincias únicas en housing_df (normalizadas): 22
+- Provincias únicas en municipal_df (normalizadas): 46
+- Provincias únicas en housing_df (mapeadas): 22
+- Provincias únicas en municipal_df (mapeadas): 46
+- Provincias comunes después del mapeo: 18
+
+## Resultados de la Integración
+- Dimensiones del dataset integrado: (134732, 56)
+- Filas con datos municipales: 69830
+- Porcentaje de filas con datos municipales: 51.83%

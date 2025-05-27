@@ -1,0 +1,43 @@
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Entornos virtuales
+venv/
+ENV/
+
+# Archivos temporales
+*.tmp
+*.swp
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos grandes de datos (opcional, comenta si necesitas incluirlos)
+# *.csv
+# *.zip
+
+# Archivos específicos del proyecto que no quieras subir
+# Template Rubrica TF GCDA - Nombre Estudiante (v20221_1).xlsx
