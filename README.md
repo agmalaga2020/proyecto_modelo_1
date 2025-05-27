@@ -5,11 +5,20 @@ Este proyecto analiza datos del mercado inmobiliario español, integrando inform
 ## Contenido del Proyecto
 
 - Datos de viviendas por provincias (`houses_*.csv`)
-- Datos integrados de viviendas a nivel municipal (`housing_municipal_integrated.csv`)
+- Datos integrados de viviendas a nivel municipal (no incluidos en el repositorio por limitaciones de tamaño)
 - Notebooks de análisis y modelado
 - Modelo predictivo implementado
 - Visualizaciones y resultados del modelo
 - Interfaz web simple para consultar predicciones
+
+## Archivos Grandes
+
+Debido a las limitaciones de GitHub, los siguientes archivos no están incluidos en el repositorio:
+- `spanish_houses.csv` (93.93 MB)
+- `housing_municipal_integrated.csv` (101.94 MB)
+- `housing_municipal_integrated_fixed.csv` (140.65 MB)
+
+Estos archivos son necesarios para ejecutar algunos de los notebooks. Por favor, contacta con el propietario del repositorio para obtener estos archivos.
 
 ## Estructura del Proyecto
 
