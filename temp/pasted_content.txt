@@ -1,0 +1,57 @@
+### Modelo Predictivo de Precios de Vivienda: Herramienta, Modelos y Métricas
+
+Como complemento al modelo de simulación basada en agentes, se ha desarrollado un **módulo independiente de predicción de precios de vivienda** que actúa como línea base (“benchmark”) y ayuda a calibrar la simulación. A continuación se describe brevemente qué se realiza en este componente, qué herramientas y modelos se emplean, y cómo se evalúa su desempeño.
+
+1. **Herramientas y entorno de desarrollo**
+
+   * Lenguaje: **Python 3.x**.
+   * Librerías principales:
+
+     * **pandas** y **NumPy** para la manipulación y limpieza de datos.
+     * **scikit-learn** para implementación de algoritmos de regresión, validación y selección de modelos.
+     * **XGBoost** o **LightGBM** (opcional) para modelos de boosting de alto rendimiento.
+     * **Matplotlib** y **Seaborn** para generación de gráficos de rendimiento y análisis de errores.
+
+2. **Proceso de preparación de datos**
+
+   * **Recolección** de un histórico de precios de venta (y alquiler) por municipio, junto con atributos del inmueble (m², antigüedad, número de habitaciones) y variables contextuales (renta per cápita, índice de desarrollo humano municipal, distancia a transporte público).
+   * **Limpieza** de valores atípicos (outliers) y tratamiento de faltantes: imputación por mediana o eliminación según sea apropiado.
+   * **Ingeniería de características**:
+
+     * Creación de variables derivadas (p. ej. precio €/m², ratios de población urbana).
+     * Codificación de variables categóricas (provincia, tipo de vivienda) mediante *one-hot encoding*.
+     * Escalado de variables numéricas (normalización o estandarización) cuando el algoritmo lo requiere.
+
+3. **Selección de modelos**
+
+   * **Regresión lineal regularizada** (Ridge, Lasso) como punto de partida para evaluar linealidad básica.
+   * **Árboles de decisión** y ensambles:
+
+     * **Random Forest Regressor**: modelo de bosque aleatorio que combina múltiples árboles de decisión para reducir varianza y capturar relaciones no lineales.
+     * **Gradient Boosting Machines** (*GBM*, XGBoost o LightGBM): ensamble secuencial que optimiza gradualmente el error, muy efectivo en datos heterogéneos.
+   * **Modelos avanzados** (opcional): redes neuronales de tamaño moderado (MLP Regressor) o regresión de vectores de soporte (SVR) si aportan mejoras.
+
+4. **Validación y evaluación**
+
+   * División de los datos en **conjunto de entrenamiento** (80 %) y **prueba** (20 %), con estratificación por provincia o rango de precios para garantizar representatividad.
+   * Uso de **validación cruzada k-fold** (por ejemplo, k = 5) en el conjunto de entrenamiento para ajustar hiperparámetros (número de árboles, profundidad máxima, tasa de aprendizaje).
+   * Métricas principales de evaluación:
+
+     * **RMSE** (Root Mean Squared Error): mide la magnitud promedio del error, penalizando fuertemente los grandes desvíos.
+     * **MAE** (Mean Absolute Error): error medio absoluto, más robusto frente a outliers.
+     * **R²** (Coeficiente de determinación): proporción de varianza explicada por el modelo; valores cercanos a 1 indican alto poder explicativo.
+   * Adicionalmente se revisan:
+
+     * **Distribución de residuales** para verificar sesgos sistemáticos.
+     * **Importancia de variables** (feature importance) para identificar las características más relevantes (p. ej. área, ubicación, nivel de renta).
+
+5. **Resultados y rol en la calibración**
+
+   * El modelo predictivo sirve para:
+
+     * **Comparar** la evolución de precios sin intervenciones (línea base) con los resultados de la simulación, validando que la dinámica de precios simulada sea coherente con la predicción estadística.
+     * **Informar** la configuración de expectativas de los agentes (por ejemplo, hogares que forman “expectativas adaptativas” del precio futuro según la predicción).
+     * **Detectar anomalías** en la simulación: si la simulación produce precios muy distintos de lo que el modelo predictivo considera plausible, se investigan posibles errores de parámetros o dinámicas mal calibradas.
+   * En pruebas preliminares, el **Gradient Boosting** fue el modelo con mejor desempeño (RMSE \~ 80 €/m² y R² ≈ 0.85 en datos de prueba), equilibrando precisión y capacidad de generalización.
+
+En conjunto, este **módulo predictivo** aporta una referencia cuantitativa que mejora la robustez del análisis, complementando la visión de “laboratorio virtual” de la simulación basada en agentes con un enfoque estadístico probado y contrastado en la literatura de mercado inmobiliario.

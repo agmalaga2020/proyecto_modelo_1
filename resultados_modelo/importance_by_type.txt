@@ -1,5 +1,0 @@
-# Importancia de Variables por Tipo
-
-- Variables de Vivienda: 0.5885 (58.85%)
-- Variables Socioeconómicas: 0.2687 (26.87%)
-- Variables Categóricas: 0.1427 (14.27%)

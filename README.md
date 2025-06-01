@@ -24,9 +24,41 @@ Estos archivos son necesarios para ejecutar algunos de los notebooks. Por favor,
 
 ## Estructura del Proyecto
 
-- `/notebooks/`: Contiene los scripts de Python para la limpieza de datos, integración y modelado
-- `/resultados_modelo/`: Almacena los resultados del modelo, gráficos y el modelo entrenado
-- `/website/`: Una interfaz web simple para interactuar con el modelo
+```
+proyecto_modelo_1/
+├── data/
+│   ├── raw/                 # Datos originales sin procesar
+│   │   ├── houses_*.csv     # Datos de viviendas por provincia
+│   │   ├── rentas_*.csv     # Datos de rentas
+│   │   └── ...              # Otros datasets originales
+│   └── processed/           # Datos procesados y limpios
+│       ├── train_data*.csv  # Datos de entrenamiento
+│       ├── test_data*.csv   # Datos de prueba
+│       └── housing_municipal_integrated*.csv
+├── notebooks/               # Jupyter notebooks y scripts de Python
+│   ├── correccion_*.py      # Scripts de corrección de datos
+│   ├── modelo_*.py          # Scripts de modelado
+│   └── diagnostico_*.py     # Scripts de diagnóstico
+├── models/
+│   └── trained/             # Modelos entrenados (.pkl)
+│       ├── RandomForest_*.pkl
+│       └── Ridge_*.pkl
+├── docs/
+│   ├── reports/             # Informes y resultados
+│   │   ├── informe_resultados.md
+│   │   ├── model_comparison_results.csv
+│   │   └── ...
+│   └── images/              # Visualizaciones y gráficos
+│       ├── feature_importance_*.png
+│       ├── model_comparison_*.png
+│       └── ...
+├── web/                     # Sitio web del proyecto
+│   ├── index.html
+│   ├── styles.css
+│   ├── script.js
+│   └── images/
+└── temp/                    # Archivos temporales
+```
 
 ## Modelos Implementados
 
@@ -50,7 +82,7 @@ El proyecto incluye varias visualizaciones como:
 ## Demo en Línea
 
 La interfaz web del proyecto está disponible en GitHub Pages:
-**[Ver Demo](https://agmalaga2020.github.io/proyecto_modelo_1/website/)**
+**[Ver Demo](https://agmalaga2020.github.io/proyecto_modelo_1/web/)**
 
 La web incluye:
 - Resumen ejecutivo del análisis

@@ -41,3 +41,8 @@ Thumbs.db
 
 # Archivos específicos del proyecto que no quieras subir
 # Template Rubrica TF GCDA - Nombre Estudiante (v20221_1).xlsx
+
+# Archivos grandes de datos
+data/raw/spanish_houses.csv
+data/processed/housing_municipal_integrated.csv
+data/processed/housing_municipal_integrated_fixed.csv
